@@ -10,6 +10,6 @@ public boolean isIsomorphic(Node root1,Node root2)
         //Check persistent or inverted combinations betweeen left and right subtrees of each
         boolean persist = isIsomorphic(root1.left,root2.left)&&isIsomorphic(root1.right,root2.right);
 	boolean invert = isIsomorphic(root1.left,root2.right)&&isIsomorphic(root1.right,root2.left);
-        //Return true if either combination yields true(Isomorphic)
+        //Return true if either combination yields true (Isomorphic)
         return persist||invert;
     }
