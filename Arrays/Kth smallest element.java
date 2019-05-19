@@ -11,8 +11,8 @@ class GFG {
 		    int size = (int)Math.pow(10,5)+1;
 		    int[] countarr = new int[size];
 		    String line = br.readLine(); 
-            String[] str = line.trim().split("\\s+");
-            //Read each element from the string into a counting array at the numbers index
+		    String[] str = line.trim().split("\\s+");
+		    //Read each element from the string into a counting array at the numbers index
 		    for(int i=0;i<n;i++)
 		    {
 		        int ele = Integer.parseInt(str[i]);
