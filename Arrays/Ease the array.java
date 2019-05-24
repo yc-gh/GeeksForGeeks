@@ -3,6 +3,7 @@
 //If element is 0, skip 
 //If element matches next element, copy double of this element and skip next element
 //Any other (non zero) element is copied
+//Remaining elements of result array remain 0 (Array defaults) so no need to copy 0s
 public static void main (String[] args) throws IOException{
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     int t = Integer.parseInt(br.readLine().trim());
