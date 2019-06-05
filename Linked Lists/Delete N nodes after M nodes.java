@@ -24,4 +24,5 @@ static Node linkdelete(Node head, int M, int N)
         first.next = second.next;
         first = first.next;
     }
+    return head;
 } 
