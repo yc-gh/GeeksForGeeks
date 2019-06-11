@@ -1,5 +1,7 @@
     //Keep adding non repeated characters to a list
     //And keep track of repeated characters using a boolean array
+    //Remove element from list if it is repeated
+    //Print first element from list
 	public static void main (String[] args) throws IOException
 	 {
 	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
