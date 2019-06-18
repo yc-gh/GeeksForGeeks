@@ -15,6 +15,7 @@ void getIntersection(Node head1, Node head2)
          }
          set1.retainAll(set2);
          Node last = null;
+         
          //Create new linked list from intersecting nodes
          for(int i : set1)
          {

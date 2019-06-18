@@ -8,6 +8,7 @@
                 return;
             }
             Node curr = head;
+            
             //Traverse the list till a node with data greater than value is encountered
             //Or if list reaches last node 
             //Insert new element at the end
@@ -15,6 +16,7 @@
             {
                 curr=curr.next;
             }
+            
             //Insertion at beginning
             //If value is less than head data, insert new node at head and make it new head
             //Also last node in list should point to this node
@@ -34,9 +36,12 @@
                 newnode.next = curr.next;
                 curr.next = newnode;
             }
+            
             //Print list
             curr = head;
+            
             StringBuilder output = new StringBuilder();
+            
             //Till current doesnt reach head (Circular linked list)
             do
             {

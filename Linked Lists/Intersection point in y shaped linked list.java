@@ -4,8 +4,10 @@
 	int intersectPoint(Node headA, Node headB)
 	{
          if(headA==null || headB==null) return -1;
+         
          //Set mark node for checking
          Node mark = headA;
+         
          //Traverse till end of list A
          while(mark!=null)
          {
@@ -21,6 +23,7 @@
              //Else check for next node in list A
              mark = mark.next;
          }
+         
          //Lists are not merged
          return -1;
 	}

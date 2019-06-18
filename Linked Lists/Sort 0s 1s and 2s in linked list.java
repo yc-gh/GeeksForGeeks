@@ -100,8 +100,10 @@
         //2s are at the end of the final list, mark null as next of 2s last node
         //But only if there were any 2s in the given list, else Null pointer exception
         if(twohead!=null) twolast.next=null;
+        
         //A node that will be returned 
         Node newhead=null;
+        
         //If no 0s in the list
         //No need to check for 2s -- If no 2s then the 2s head will be null
         if(zerohead==null)

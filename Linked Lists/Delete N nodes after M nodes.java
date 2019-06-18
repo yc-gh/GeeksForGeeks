@@ -14,8 +14,10 @@ static Node linkdelete(Node head, int M, int N)
         {
             first = first.next;
         }
+        
         //Set second pointer here as well
         second = first;
+        
         //Traverse N nodes using second pointer
         while(y-->0 && second.next!=null)
         {

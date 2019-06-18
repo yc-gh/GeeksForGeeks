@@ -36,15 +36,20 @@
     static Node mergeSort(Node head)
     {
         if(head==null || head.next==null) return head;
+        
         //Get middle of list
         Node middle = getMiddle(head);
+        
         //Next of middle for splitting lists
         Node nextofmiddle = middle.next;
         middle.next=null;
+        
         //Mergesort on first half
         Node left = mergeSort(head);
+        
         //Mergesort on second half
         Node right = mergeSort(nextofmiddle);
+        
         //Merge sorted lists
         Node sortedlist = sortedMerge(left,right);
         return sortedlist;

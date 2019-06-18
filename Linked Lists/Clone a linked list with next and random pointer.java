@@ -14,6 +14,7 @@
         Node orignode = head;
         Node clonenode = null;
         Map<Node,Node> map = new HashMap<>();
+        
         //Create new clone nodes and map original nodes to new clone nodes
         while(orignode!=null)
         {
@@ -21,10 +22,13 @@
             map.put(orignode,clonenode);
             orignode = orignode.next;
         }
+        
         //Now link the new clone nodes using the mapping 
         orignode = head;
+        
         //Get head of new list
         Node newhead = map.get(orignode);
+        
         //For each original node
         //Get it's clone node, set next of clone to mapping of next original
         //Set clone's arb to original->arb->next

@@ -50,7 +50,8 @@
 	        {
 	            wt[i] = Integer.parseInt(input[i]);
 	        }
-	        //One extra row and column for 0s in first row, col
+			
+			//One extra row and column for 0s in first row, col
 	        int[][] k = new int[n+1][W+1];
 	        for(int i=0;i<=n;i++)
 	        {
@@ -60,7 +61,8 @@
 	                {
 	                    k[i][w]=0;
 	                }
-	                //If current item's weight is <= weight of current column (each column not max weight)
+					
+					//If current item's weight is <= weight of current column (each column not max weight)
 	                else if(wt[i-1] <= w)
 	                {
 	                    //Value obtained by including it
@@ -71,7 +73,8 @@
 	                    //Whichever value is greater
 	                    k[i][w] = Math.max(included,not_included);
 	                }
-	                //Else when weight is greater than current col weight (Not included)
+					
+					//Else when weight is greater than current col weight (Not included)
 	                else
 	                {
 	                    k[i][w] = k[i-1][w];

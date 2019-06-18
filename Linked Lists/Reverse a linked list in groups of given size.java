@@ -10,6 +10,7 @@
         Node front = node;
         Node follow = node;
         int i = 0;
+        
         //Move front till it reaches end of list
         while(front!=null)
         {
