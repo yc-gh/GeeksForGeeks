@@ -4,7 +4,8 @@ public static void main (String[] args) throws IOException{
 		while(t-->0)
 		{
 		    String input = br.readLine().trim();
-		    //HashSet does not maintain order of elements during insertion
+			
+			//HashSet does not maintain order of elements during insertion
 		    //LinkedHashSet maintains the order, useful for output in the same order
 		    Set<Character> set = new LinkedHashSet<>();
 		    for(Character c : input.toCharArray())

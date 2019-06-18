@@ -19,6 +19,7 @@ public static void main (String[] args) throws IOException{
                 b[i] = Integer.parseInt(input[i]);
             }
             int k = Integer.parseInt(br.readLine().trim());
+            
             //Use tree set to store each added element in sorted order
             Set<Integer> set = new TreeSet<>();
             for(int i=0;i<m;i++)
@@ -29,6 +30,7 @@ public static void main (String[] args) throws IOException{
                 }
             }
             boolean flag=false;
+            
             //If set contains less than k(N) elements, Nth sum doesnt exist
             if(set.size()<k)
             {

@@ -19,7 +19,8 @@
 	            num[i] = Integer.parseInt(input[i]);
 	        }
 	        boolean found = false;
-	        //Search from right end till a smaller digit (from it's right digit) is found
+			
+			//Search from right end till a smaller digit (from it's right digit) is found
 	        for(int i=n-1;i>0;i--)
 	        {
 	            if(num[i]>num[i-1])
@@ -42,7 +43,8 @@
 	            }
 	            if(found==true) break;
 	        }
-	        StringBuilder output = new StringBuilder();
+		   
+			StringBuilder output = new StringBuilder();
 	        if(found==true)
 	        {
 	            for(int i : num) output.append(i+" ");

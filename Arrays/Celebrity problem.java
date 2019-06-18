@@ -29,6 +29,7 @@
                 stack.push(first);
             }
         }
+        
         //Get last remaining person
         int last = stack.pop();
         for(int i=0;i<n;i++)
@@ -56,6 +57,7 @@
     {
         int first = 0;
         int second = n-1;
+        
         //Check each pair of people 
         //If first knows second, first can't be celebrity, check next of first
         //Else second can't be celebrity, check previous of second
@@ -65,6 +67,7 @@
             if(knows(M,first,second)) first++;
             else second--;
         }
+        
         //Check last person for celebrity
         int last = first;
         for(int i=0;i<n;i++)

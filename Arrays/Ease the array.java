@@ -11,6 +11,7 @@ public static void main (String[] args) throws IOException{
     {
         int n = Integer.parseInt(br.readLine().trim());
         String[] input = br.readLine().trim().split("\\s+");
+        
         //One extra element kept for ensuring comparisons to not cross bounds
         int[] a = new int[n+1];
         int[] res = new int[n];

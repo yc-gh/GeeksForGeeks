@@ -9,8 +9,10 @@ public static void main (String[] args) throws IOException
             int n = Integer.parseInt(br.readLine().trim());
             int[] a = new int[n];
             int[] b = new int[n];
+            
             //Combine both arrays into a list
             List<Integer> list = new ArrayList<>();
+            
             //Use set to store n largest elements
             Set<Integer> set = new HashSet<>();
             StringBuilder output = new StringBuilder();

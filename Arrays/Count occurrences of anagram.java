@@ -29,6 +29,7 @@ public static int isAnagram(String text, String word)
                 wordmap.put(curr,wordmap.get(curr)+1);
             }
         }
+        
         //For each character in text substring, 
         //Check if there are same number of occurrences in word
         //If mismatch in count or character, return 0 (not anagram)

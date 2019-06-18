@@ -10,7 +10,8 @@ public static void main (String[] args) throws IOException{
 		    int[][] a = new int[m][n];
 		    int k = 0;
 		    int count = 0;
-		    //Keep track of each side edge using these
+			
+			//Keep track of each side edge using these
 		    //Elements are read till each side edge is reached
 		    int upperedge = 0;
 		    int rightedge = n-1;
@@ -24,7 +25,8 @@ public static void main (String[] args) throws IOException{
 		        }
 		    }
 		    StringBuilder output = new StringBuilder();
-		    //Keep repeating till all elements have been read
+			
+			//Keep repeating till all elements have been read
 		    while(count<(m*n))
 		    {
 		        //Read upper edge elements
@@ -33,36 +35,44 @@ public static void main (String[] args) throws IOException{
 		            output.append(a[upperedge][i]+" ");
 		            count++;
 		        }
-		        //Upper edge moves down
+				
+				//Upper edge moves down
 		        upperedge++;
-		        //If matrix is not square, it's a possible that edges may not have met
+				
+				//If matrix is not square, it's a possible that edges may not have met
 		        //This prevents further iterations if all elements have been read already
 		        if(count>=m*n) break;
-		        //Read right edge elements
+				
+				//Read right edge elements
 		        for(int i=upperedge;i<=bottomedge;i++)
 		        {
 		            output.append(a[i][rightedge]+" ");
 		            count++;
 		        }
-		        //Right edge moves left
+				
+				//Right edge moves left
 		        rightedge--;
 		        if(count>=m*n) break;
-		        //Read bottom edge elements
+				
+				//Read bottom edge elements
 		        for(int i=rightedge;i>=leftedge;i--)
 		        {
 		            output.append(a[bottomedge][i]+" ");
 		            count++;
 		        }
-		        //Bottom edge moves up
+				
+				//Bottom edge moves up
 		        bottomedge--;
 		        if(count>=m*n) break;
-		        //Read left edge elements
+				
+				//Read left edge elements
 		        for(int i=bottomedge;i>=upperedge;i--)
 		        {
 		            output.append(a[i][leftedge]+" ");
 		            count++;
 		        }
-		        //Left edge moves right
+				
+				//Left edge moves right
 		        leftedge++;
 		    }
 		    System.out.println(output);

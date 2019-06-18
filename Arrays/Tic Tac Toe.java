@@ -13,6 +13,7 @@ static String check(char[][] a)
                 else owins = true;
             }
         }
+        
         //Check if both win 
         if(xwins==true && owins==true) return "Invalid";
         
@@ -64,7 +65,8 @@ static String check(char[][] a)
 	        int k = 0;
 	        int xcount = 0;
 	        int ocount = 0;
-	        //Read input into a 2d char array
+            
+            //Read input into a 2d char array
 	        for(int i=0;i<3;i++)
 	        {
 	            for(int j=0;j<3;j++)
@@ -75,7 +77,8 @@ static String check(char[][] a)
 	                else ocount++;
 	            }
 	        }
-	        //Total X's should be 5 and O's should be 4
+            
+            //Total X's should be 5 and O's should be 4
 	        //If either is more than this, board is invalid
 	        if(xcount>5 || ocount>4)
 	        {

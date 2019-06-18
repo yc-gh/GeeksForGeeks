@@ -5,6 +5,7 @@ public static void main (String[] args) throws IOException{
 		{
 		    int n = Integer.parseInt(br.readLine().trim());
 			String[] input = br.readLine().trim().split("\\s+");
+			
 			//Iterate through array
 			//Only those buildings will recieve light which have more height than building with max height prior to them
 			int maxheight = Integer.parseInt(input[0]);

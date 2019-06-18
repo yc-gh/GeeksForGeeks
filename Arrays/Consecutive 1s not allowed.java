@@ -5,7 +5,8 @@ public static void main (String[] args) throws IOException
 	    while(t-->0)
 	    {
 	        int n = Integer.parseInt(br.readLine().trim());
-	        //Keep two arrays
+			
+			//Keep two arrays
 	        //One for numbers ending with 0
 	        //Other for numbers ending with 1
 	        //At length 1, there is only 1 number in each array ie. 0 and 1

@@ -9,17 +9,22 @@
 	        String[] numbers = {"","one","two","three","four","five","six","seven","eight","nine",
                 "ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen",
                 "nineteen"};
-            //Reference words for multiples of ten <100
+			
+			//Reference words for multiples of ten <100
             String[] tens = {"","ten","twenty","thirty","forty","fifty","sixty","seventy","eighty","ninety"};
-            //Reference words for powers of 10
+			
+			//Reference words for powers of 10
             String[] powers = {"zero","ten","hundred","thousand"};
-            //Calculate number of digits
+			
+			//Calculate number of digits
 	        int numofdigits = (int)Math.log10(Integer.parseInt(n))+1;
-	        //Number of zeroes after leftmost digit (1 - number of digits)
+			
+			//Number of zeroes after leftmost digit (1 - number of digits)
 	        int zeroes = numofdigits-1;
 	        StringBuilder output = new StringBuilder();
 	        int i=0;
-	        //Repeatedly get one character starting from left side, till only two digits left 
+			
+			//Repeatedly get one character starting from left side, till only two digits left 
 	        //Convert to word and append power of ten
 	        if(numofdigits>2)
 	        {
@@ -32,9 +37,11 @@
     	        //Get remaining two digit number, if it's not 0, append and
     	        if(Integer.parseInt(n.substring(i))!=0) output.append("and ");
 	        }
-	        //Get last two digits (or if number was two digits only)
+			
+			//Get last two digits (or if number was two digits only)
             int num = Integer.parseInt(n.substring(i));
-            //If number is less than 20, print it's word 
+			
+			//If number is less than 20, print it's word 
             if(num<20) output.append(numbers[num]+" ");
             //Else split it into two digits 
             //If units place is 0 ie. number is multiple of 10 then don't append anything for unit's place
