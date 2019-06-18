@@ -22,20 +22,26 @@ static void searchWords(char[][] boggle,int r,int c,Set<String> dict,boolean[][]
 {
     //Append current cell character to previous string 
     str += boggle[r][c];
+    
     //If word length exceeds max length word in dictionary, don't check any further
     if(str.length()>maxlen) return;
+    
     //Check if current set of letters matches word
     if(isWord(dict,str)) set.add(str);
+    
     //Utility indexes for adjacent cells
     int[] rowNums = {-1,-1,-1,0,0,1,1,1};
     int[] colNums = {-1,0,1,-1,1,-1,0,1};
+    
     //Set visited true so that the current word check doesn't check it again
     visited[r][c] = true;
+    
     for(int i=0;i<8;i++)
     {
         //Adjacent cell indexes
         int adjX = r + rowNums[i];
         int adjY = c + colNums[i];
+        
         //Check if these adjacent cells are safe to go to (within bounds and not visited)
         if(isSafe(adjX,adjY,boggle.length,boggle[0].length,visited))
         {
@@ -43,6 +49,7 @@ static void searchWords(char[][] boggle,int r,int c,Set<String> dict,boolean[][]
             searchWords(boggle,adjX,adjY,dict,visited,str,maxlen);
         }
     }
+
     //Reset it's visited in so that other words forming from the same char can be checked
     visited[r][c] = false;
 }
@@ -69,6 +76,7 @@ public static void main (String[] args) throws IOException
         {
             //Reset set for each test case
             set = new TreeSet<>();
+            
             int x = Integer.parseInt(br.readLine().trim());
             String[] inputdict = br.readLine().trim().split("\\s+");
             String[] inputbounds = br.readLine().trim().split("\\s+");
@@ -76,6 +84,7 @@ public static void main (String[] args) throws IOException
             int m = Integer.parseInt(inputbounds[1]);
             String[] inputmat = br.readLine().trim().split("\\s+");
             char[][] boggle = new char[n][m];
+            
             //Store dictionary as a hashset
             //And also store length of maximum length word
             //So that DFS can be stopped when this length is exceeded
@@ -87,6 +96,7 @@ public static void main (String[] args) throws IOException
                 if(strlen > maxwordlen) maxwordlen = strlen;
                 dict.add(str);
             }
+            
             //Fill the board from input
             for(int i=0;i<n;i++)
             {
@@ -95,13 +105,16 @@ public static void main (String[] args) throws IOException
                     boggle[i][j] = inputmat[i*m+j].charAt(0);
                 }
             }
+            
             //Find words
             findWords(boggle,n,m,dict,maxwordlen);
+            
             if(set.isEmpty())
             {
                 System.out.println(-1);
                 continue;
             }
+            
             StringBuilder output = new StringBuilder();
             for(String str : set)
             {
@@ -175,16 +188,20 @@ static void searchWords(char[][] boggle,int r,int c,TrieNode root,boolean[][] vi
     //If current root of Trie is a leaf, print the word till here
     //But continue checking for more words with these letters
     if(root.isEndOfWord==true) set.add(str);
+    
     //Utility indexes for adjacent cells
     int[] rowNums = {-1,-1,-1,0,0,1,1,1};
     int[] colNums = {-1,0,1,-1,1,-1,0,1};
+
     //Set visited true so that the current word check doesn't check it again
     visited[r][c] = true;
+    
     for(int i=0;i<8;i++)
     {
         //Adjacent cell indexes
         int adjRow = r + rowNums[i];
         int adjCol = c + colNums[i];
+        
         //Check if these adjacent cells are safe to go to (within bounds and not visited)
         if(isSafe(adjRow,adjCol,boggle.length,boggle[0].length,visited))
         {
@@ -198,6 +215,7 @@ static void searchWords(char[][] boggle,int r,int c,TrieNode root,boolean[][] vi
             }
         }
     }
+
     //Reset it's visited in so that other words forming from the same char can be checked
     visited[r][c] = false;
 }
@@ -232,17 +250,20 @@ public static void main (String[] args) throws IOException
             int x = Integer.parseInt(br.readLine().trim());
             String[] inputdict = br.readLine().trim().split("\\s+");
             String[] dict = new String[x];
+            
             //Input dictionary words in upper case for Trie matching
             for(int i=0;i<x;i++)
             {
                 dict[i] = inputdict[i].toUpperCase();
             }
+            
             String[] inputbounds = br.readLine().trim().split("\\s+");
             int n = Integer.parseInt(inputbounds[0]);
             int m = Integer.parseInt(inputbounds[1]);
             String[] inputmat = br.readLine().trim().split("\\s+");
             char[][] boggle = new char[n][m];
             TrieNode root = new TrieNode();
+            
             //Fill the board from input
             //The input is converted to upper case for the Trie
             for(int i=0;i<n;i++)
@@ -252,21 +273,26 @@ public static void main (String[] args) throws IOException
                     boggle[i][j] = Character.toUpperCase(inputmat[i*m+j].charAt(0));
                 }
             }
+            
             //Insert all words into trie
             for(int i=0;i<x;i++)
             {
                 insertTrie(root,dict[i]);
             }
+            
             //Find words
             findWords(boggle,n,m,root);
+            
             //If no words were found
             if(set.isEmpty())
             {
                 System.out.println(-1);
                 continue;
             }
+            
             //Else if words are found
             StringBuilder output = new StringBuilder();
+            
             //If input words where in lowercase 
             //Convert output to lowercase
             if(!Character.isUpperCase(inputdict[0].charAt(0)))
