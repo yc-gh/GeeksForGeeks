@@ -21,18 +21,24 @@ public static void main (String[] args) throws IOException
             int r = Integer.parseInt(input[0]);
             int c = Integer.parseInt(input[1]);
             int k = 0;
+            
             //Variable to keep track of time
             int time = -1;
+            
             //Variable to keep track of fresh 
             int fresh = 0;
+            
             //Row and col numbers for 4 directions of a cell
             //Clockwise order
             int[] rowNums = {0,-1,0,1};
             int[] colNums = {-1,0,1,0};
+            
             //Array to keep track of rotten oranges
             boolean[][] rotten = new boolean[r][c];
+            
             //Queue
             Deque<Integer[]> queue = new ArrayDeque<>();
+            
             //Given matrix
             int[][] a = new int[r][c];
             input = br.readLine().trim().split("\\s+");
@@ -41,6 +47,7 @@ public static void main (String[] args) throws IOException
                 for(int j=0;j<c;j++)
                 {
                     a[i][j] = Integer.parseInt(input[k++]);
+                    
                     //While parsing input, if a rotten orange is found
                     //Set rotten to true
                     //Store the location as a temp array and enqueue
@@ -56,6 +63,7 @@ public static void main (String[] args) throws IOException
                     }
                 }
             }
+
             //Enqueue delimiter to indicate time
             queue.offer(new Integer[]{-1,++time});
             while(!queue.isEmpty())
@@ -65,6 +73,7 @@ public static void main (String[] args) throws IOException
                     Integer[] curr = queue.poll();
                     int row = curr[0];
                     int col = curr[1];
+                    
                     //For each rotten orange, check it's four sides for any fresh orange
                     for(int i=0;i<4;i++)
                     {
@@ -78,16 +87,20 @@ public static void main (String[] args) throws IOException
                         }
                     }
                 }
+                
                 //Dequeue the time delimiter
                 Integer[] timedelim = queue.poll();
+                
                 //Get the time
                 time = timedelim[1];
+                
                 //If there are rotten oranges left
                 if(!queue.isEmpty())
                 {
                     queue.offer(new Integer[]{-1,++time});
                 }
             }
+            
             //If any fresh oranges are left
             if(fresh>0)
             {

@@ -13,10 +13,12 @@ static int DFS(int[][] cells,int row,int col,boolean[][] visited)
 {
     //Set current cell as visited
     visited[row][col] = true;
+    
     //Each neighbour of current cell is traversed using these arrays
     int[] rowNums = {-1,-1,-1,0,0,1,1,1};
     int[] colNums = {-1,0,1,-1,1,-1,0,1};
     int count = 1;
+    
     //Traverse all it's neighbours
     for(int k=0;k<8;k++)
     {
@@ -34,6 +36,7 @@ static int findComponents(int[][] cells, int n, int m)
 {
     boolean[][] visited = new boolean[n][m];
     int currcount = 0,maxcount = 0;
+    
     //For each cell in the matrix that is 1 and is not visited, perform DFS 
     //Whenever an unvisited 1 is found, it is an island
     //The DFS traversal will visit all it's adjacent 1's recursively
