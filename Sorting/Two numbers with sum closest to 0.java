@@ -11,14 +11,18 @@ public static void main (String[] args) throws IOException
 	        {
 	            a[i] = Integer.parseInt(input[i]);
 	        }
-	        //Sort the array
+			
+			//Sort the array
 	        Arrays.sort(a);
-	        //Keep two pointers starting at first and last index
+			
+			//Keep two pointers starting at first and last index
 	        int left=0;
 	        int right=n-1;
-	        //Initialize minimum sum
+			
+			//Initialize minimum sum
 	        int minsum = a[left]+a[right];
-	        //Till pointers haven't crossed (till all elements read)
+			
+			//Till pointers haven't crossed (till all elements read)
 	        while(left<right)
 	        {
 	            //Evaluate sum of elements at left and right indices

@@ -12,6 +12,7 @@
             //Calculate number of elements at current level
             width = queue.size();
             if(width>maxwidth) maxwidth = width;
+            
             //Remove all elements of current level from queue 
             //Add their children to queue
             while(width-->0)

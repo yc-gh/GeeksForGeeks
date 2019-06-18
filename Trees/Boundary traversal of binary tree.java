@@ -12,6 +12,7 @@ StringBuilder output;
 void printLeftBoundary(Node node)
 {
     if(node==null) return;
+    
     //Traverse left while left child exists
     if(node.left!=null)
     {
@@ -20,6 +21,7 @@ void printLeftBoundary(Node node)
         //Move to left child
         printLeftBoundary(node.left);
     }
+    
     //If right child exists, print and move right
     else if(node.right!=null)
     {
@@ -31,6 +33,7 @@ void printLeftBoundary(Node node)
 void printRightBoundary(Node node)
 {
     if(node==null) return;
+    
     //Printing is done in reverse (after traversing)
     //Traverse right while right child exists
     if(node.right!=null)
@@ -38,6 +41,7 @@ void printRightBoundary(Node node)
         printRightBoundary(node.right);
         output.append(node.data+" ");
     }
+    
     //If left child exists, move left
     else if(node.left!=null)
     {
@@ -49,6 +53,7 @@ void printRightBoundary(Node node)
 void printLeaves(Node node)
 {
     if(node==null) return;
+    
     //Inorder traversal, print leaf nodes
     printLeaves(node.left);
     if(node.left==null && node.right==null)
@@ -61,13 +66,17 @@ void printBoundary(Node node)
 {
     if(node==null) return;
     output.append(node.data+" ");
+    
     //If methods are called with node as parameter, root node will get printed as well
     //Print left boundary nodes
     printLeftBoundary(node.left);
+    
     //Print leaf nodes of left subtree
     printLeaves(node.left);
+    
     //Print leaf nodes of right subtree
     printLeaves(node.right);
+    
     //Print right boundary nodes
     printRightBoundary(node.right);
     System.out.print(output);

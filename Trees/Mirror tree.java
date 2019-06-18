@@ -10,12 +10,14 @@ void mirror(Node node)
                  node.left=node.right;
                  node.right=null;
              }
+             
              //If right child is null, make left child as right child and set left as null
              else if(node.right==null)
              {
                  node.right=node.left;
                  node.left=null;
              }
+             
              //Else swap the nodes(Not data)
              else
              {

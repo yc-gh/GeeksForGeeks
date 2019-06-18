@@ -6,7 +6,8 @@
 	    {
 	        String str = br.readLine().trim();
 	        int n = Integer.parseInt(br.readLine().trim());
-	        //Using string replace
+			
+			//Using string replace
 	        //str = str.replace(" ","%20");
 	        //Manual conversion
 	        StringBuilder newstr = new StringBuilder();

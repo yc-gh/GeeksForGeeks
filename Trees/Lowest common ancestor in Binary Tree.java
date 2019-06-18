@@ -9,18 +9,23 @@
 	{
 	    //If null of leaf nodes is reached, return null as neither key was found in this traversal
         if(root==null) return null;
+        
         //If current node data equals either key. Return this node
         if(root.data==n1 || root.data==n2)
         {
             return root;
         }
+        
         //Check left subtree of current node
         Node leftLCA = LCA(root.left,n1,n2);
+        
         //Check right subtree  of current node
         Node rightLCA = LCA(root.right,n1,n2);
+        
         //If left and right subtrees of current node are not null
         //i.e one key in each subtree -> current node is LCA
         if(leftLCA!=null && rightLCA!=null) return root;
+        
         //Else if either left or right subtree returned null --> that subtree doesnt contain key
         //Therefore current node cannot be LCA. The subtree which returned not null will contain LCA(the returned node)
 	    return (leftLCA!=null ? leftLCA : rightLCA);

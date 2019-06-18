@@ -46,6 +46,7 @@ public static void merge(Node root1 , Node root2)
             output.append(s2top+" ");
         }
     }
+    
     //If either tree still has elements left
     //DFS traversal for remaining elements
     while(curr1!=null || stack1.size()>0)

@@ -15,6 +15,7 @@
         {
             //If petrol from the pump 
             petrol_available += petrol[i] - distance[i];
+            
             //If petrol ran out
             if(petrol_available < 0)
             {

@@ -14,13 +14,17 @@
 	        //Deal with the number as a character array rather than integer array
 	        //Or convert to integer array if parsing is necessary
 	        String n = br.readLine().trim();
-	        //Number of digits
+			
+			//Number of digits
 	        int numofdigits = n.length();
-	        //Character array of given number
+			
+			//Character array of given number
 	        char[] digits = n.toCharArray();
-	        //Flag to check if bigger number is found
+			
+			//Flag to check if bigger number is found
 	        boolean found = false;
-	        //Starting from second last index, compare each digit to it's right
+			
+			//Starting from second last index, compare each digit to it's right
 	        for(int i=numofdigits-2;i>=0;i--)
 	        {
 	            //If smaller digit found
@@ -44,7 +48,8 @@
                     Arrays.sort(digits,i+1,numofdigits);
                     break;
 	            }
-	        }
+			}
+			
 	        if(found) System.out.println(digits);
 	        else System.out.println("not possible");
 	    }

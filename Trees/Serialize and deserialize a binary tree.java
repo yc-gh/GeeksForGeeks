@@ -19,8 +19,10 @@ public String serialize(Tree root,ArrayList<Integer> aa)
             //Add data of left child to list
             aa.add(curr.left.data);
         }
+        
         //Else add -1 to list indicating null child
         else aa.add(-1);
+        
         //Same for right child
         if(curr.right!=null) 
         {
@@ -42,15 +44,18 @@ public Tree deSerialize(String data)
     String[] data_arr = data.trim().split("\\s+");
     int n = data_arr.length;
     int[] nodedata = new int[n];
+    
     //Read string into array
     for(int i=0;i<n;i++)
     {
         nodedata[i] = Integer.parseInt(data_arr[i]);
     }
     Tree root = new Tree(nodedata[0]);
+    
     //Using queue again
     Deque<Tree> queue = new ArrayDeque<>();
     queue.offer(root);
+    
     //Indext
     int nodeindex=0;
     //Starting from root node in queue
@@ -59,6 +64,7 @@ public Tree deSerialize(String data)
     while(!queue.isEmpty())
     {
         Tree curr = queue.poll();
+        
         //Check node data if the child exists
         //Nodeindex +1 for left child and +2 for right child
         if(nodedata[nodeindex+1]!=-1)
@@ -66,6 +72,7 @@ public Tree deSerialize(String data)
             curr.left = new Tree(nodedata[nodeindex+1]);
             queue.offer(curr.left);
         }
+        
         //Else child is null -- 
         //But in java the null reference is already initialized, no need to do it explicitly
         if(nodedata[nodeindex+2]!=-1)

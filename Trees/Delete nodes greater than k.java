@@ -9,17 +9,20 @@
     {
         //If tree is empty or if null is reached 
         if(root==null) return null;
+        
         //If current node is the key
         if(root.data==x)
         {
             return root.left;
         }
+        
         //If key is in right subtree
         if(x>root.data)
         {
             root.right = deleteNode(root.right,x);
             return root;
         }
+        
         //Key in left subtree
         else
         {

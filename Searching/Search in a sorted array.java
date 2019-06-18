@@ -9,7 +9,8 @@
 	    {
 	        //Calculate middle index
 	        int mid = (low+high)/2;
-	        //If key matches middle element
+			
+			//If key matches middle element
 	        if(a[mid]==k) return mid;
 	        //Else if left subarray is sorted 
 	        else if(a[low]<a[mid])

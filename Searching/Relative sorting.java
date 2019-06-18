@@ -12,22 +12,30 @@ public static void main (String[] args) throws IOException
             String[] input = br.readLine().trim().split("\\s+");
             int n = Integer.parseInt(input[0]);
             int m = Integer.parseInt(input[1]);
+            
             //First and second input arrays
             int[] a = new int[n];
             int[] b = new int[m];
+            
             //Map
             Map<Integer,Integer> map = new HashMap<>();
+            
             input = br.readLine().trim().split("\\s+");
+            
             StringBuilder output = new StringBuilder();
+            
             for(int i=0;i<n;i++)
             {
                 a[i] = Integer.parseInt(input[i]);
             }
+            
             input = br.readLine().trim().split("\\s+");
+            
             for(int i=0;i<m;i++)
             {
                 b[i] = Integer.parseInt(input[i]);
             }
+            
             //Map each element of first array to it's count
             for(int i=0;i<n;i++)
             {
@@ -40,6 +48,7 @@ public static void main (String[] args) throws IOException
                     map.put(a[i],map.get(a[i])+1);
                 }
             }
+            
             //Iterate through second array whilst checking map 
             //If element exists in map, print it for each occurrence
             for(int i=0;i<m;i++)
@@ -54,6 +63,7 @@ public static void main (String[] args) throws IOException
                     map.remove(b[i]);
                 }
             }
+            
             //If any elements left in map (elements of first arr that didn't match second arr)
             //Print them in sorted order
             List<Integer> list = new ArrayList<>();

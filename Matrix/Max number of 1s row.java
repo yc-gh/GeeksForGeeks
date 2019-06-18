@@ -10,7 +10,8 @@ public static void main (String[] args) throws IOException
 	        input = br.readLine().trim().split("\\s+");
 	        int max1s = 0;
 	        int rowindex = 0;
-	        //Count 1s from the input 
+			
+			//Count 1s from the input 
 	        //OR input into array then calculate from the array
 	        //Traversing a 1d array as 2d array -- index is [width*row + column]
 	        for(int i=0;i<rows;i++)

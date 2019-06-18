@@ -7,13 +7,16 @@
 	        int n = Integer.parseInt(br.readLine().trim());
 	        String[] input = br.readLine().trim().split("\\s+");
 	        Deque<Integer> stack = new ArrayDeque<>();
-	        //Push all array elements to stack in reverse order
+			
+			//Push all array elements to stack in reverse order
 	        for(int i=n-1;i>=0;i--)
 	        {
 	            stack.push(Integer.parseInt(input[i]));
 	        }
-	        StringBuilder output = new StringBuilder();
-	        //While stack has elements, pop one element and compare it with top element
+			
+			StringBuilder output = new StringBuilder();
+			
+			//While stack has elements, pop one element and compare it with top element
 	        while(!stack.isEmpty())
 	        {
 	            int a = stack.pop();

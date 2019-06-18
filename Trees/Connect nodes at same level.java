@@ -8,8 +8,10 @@ void connect(Node root)
     {
         //Calculate size of queue -> no. of elements at current level
         int size = queue.size();
+        
         //Reference for setting nextRight
         Node levelnode = null;
+        
         //Poll all elements of current level
         //Set the nextRight reference
         //And offer their children to queue

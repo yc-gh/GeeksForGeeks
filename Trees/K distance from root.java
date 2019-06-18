@@ -11,9 +11,11 @@ void printKdistance(Node node, int k)
              //Increment distance for each level traversed
              //Break loop when required level is reached
              if(dist++==k) break;
+             
              //Calculate number of elements at current in each iteration
              //So that only those elements are polled 
              int size = queue.size();
+             
              //Poll all elements of current level and offer their children  
              while(size-->0)
              {
@@ -22,10 +24,12 @@ void printKdistance(Node node, int k)
                  if(curr.right!=null) queue.offer(curr.right);
              }
          }
+         
          //If entire tree was traversed but k is still greater than max level of tree
          //Then return nothing
          if(k>dist) return;
          StringBuilder output = new StringBuilder();
+         
          //Print elements of current level (loop was stopped at required level)
          while(!queue.isEmpty())
          {

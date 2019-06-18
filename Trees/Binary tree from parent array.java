@@ -9,19 +9,23 @@ static void createNode(int[] parent,int i,Node[] created)
 {
     //Already created
     if(created[i]!=null) return;
+    
     //Create node and store reference
     created[i] = new Node(i);
+    
     //If parent is -1, this node is root
     if(parent[i]==-1)
     {
         root = created[i];
         return;
     }
+    
     //If parent doesn't exist, create it
     if(created[parent[i]]==null)
     {
         createNode(parent,parent[i],created);
     }
+    
     //Set left or right child whichever is null
     Node parentnode = created[parent[i]];
     if(parentnode.left==null) parentnode.left = created[i];
@@ -30,6 +34,7 @@ static void createNode(int[] parent,int i,Node[] created)
 public static Node createTree(int[] parent, int n)
 {
     root=null;
+    
     //Keep array of references to track whether a node is created or not
     Node[] created = new Node[n];
     for(int i=0;i<n;i++)

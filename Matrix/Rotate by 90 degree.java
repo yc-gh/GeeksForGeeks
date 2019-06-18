@@ -8,7 +8,8 @@ public static void main (String[] args) throws IOException
             String[] input = br.readLine().trim().split("\\s+");
 	        int[][] a = new int[n][n];
 	        int index = 0;
-	        //Read input into array
+			
+			//Read input into array
 	        for(int i=0;i<n;i++)
 	        {
 	            for(int j=0;j<n;j++)
@@ -16,7 +17,8 @@ public static void main (String[] args) throws IOException
                     a[i][j] = Integer.parseInt(input[index++]);
                 }
 	        }
-	        //Transpose of matrix
+			
+			//Transpose of matrix
 	        for(int i=0;i<n;i++)
 	        {
 	            for(int j=i;j<n;j++)
@@ -26,7 +28,8 @@ public static void main (String[] args) throws IOException
 	                a[j][i] = temp;
 	            }
 	        }
-	        //Reverse elements in each column
+			
+			//Reverse elements in each column
 	        for(int j=0;j<n;j++)
             {
                 for(int i=0,k=n-1;i<k;i++,k--)
@@ -36,7 +39,8 @@ public static void main (String[] args) throws IOException
                     a[k][j] = temp;
                 }
             }
-            //Print matrix
+			
+			//Print matrix
             StringBuilder output = new StringBuilder();
             for(int i=0;i<n;i++)
             {
