@@ -8,4 +8,8 @@ void countDistinct(int A[], int k, int n)
 	        output.append(set.size()+" ");
 	    }
 	    System.out.print(output);
-    }
+	}
+	
+
+
+
