@@ -15,6 +15,7 @@ static boolean wordbreak(String word,int size,Set<String> dict)
     boolean[] wb = new boolean[size+1];
     int i=0;
     //Iterate through the entire string
+    //Iterate from 1 to size for substring to work properly
     for(int j=1;j<=size;j++)
     {
         //If a matching word is found, mark it as true
