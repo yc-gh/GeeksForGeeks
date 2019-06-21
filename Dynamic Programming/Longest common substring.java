@@ -1,6 +1,22 @@
 //The idea is to keep track of substring length at each index of each string
 //If characters don't match, substring length is 0
 //If they do match, substring length is 1 + previous characters' substring length
+
+static int lcs(int i, int j, int count) { 
+  
+    if (i == 0 || j == 0) { 
+        return count; 
+    } 
+
+    if (X.charAt(i - 1) == Y.charAt(j - 1)) { 
+        count = lcs(i - 1, j - 1, count + 1); 
+    } 
+    count = Math.max(count, Math.max(lcs(i, j - 1, 0), 
+                        lcs(i - 1, j, 0))); 
+    return count; 
+} 
+
+
 public static void main (String[] args) throws IOException
     {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
