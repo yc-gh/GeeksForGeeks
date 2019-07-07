@@ -1,7 +1,6 @@
 //Inorder approach -- collections not allowed in this solution
-//A new node is inserted into linked list when the inorder root is reached for each subtree
-//Although the circular reference from last to head is 
-Node head, last;
+//Same as binary tree to DLL, just set references from last node to head
+Node head, prev;
 
 Node bTreeToClist(Node root)
 {
@@ -10,30 +9,29 @@ Node bTreeToClist(Node root)
         return root;
     }
 
+    //Recursively convert left subtree
     bTreeToClist(root.left);
     
-    //After traversing the left subtree
-    //Create and insert node into linked list
-    if(head == null)
+    //Create references from current node to/from previous 
+    if(prev == null)
     {
-        Node newnode = new Node(root.data);
-        head = newnode;
-        last = head;
+        head = root;
     }
     else
     {
-        Node newnode = new Node(root.data);
-        last.right = newnode;
-        newnode.left = last;
-        last = newnode;
+        prev.right = root;
+        root.left = prev;
     }
     
-    //Traverse right subtree
+    //Set prev to current node
+    prev = root;
+    
+    //Recursively convert right subtree
     bTreeToClist(root.right);
     
     //Set circular reference from last to head
-    last.right = head;
-    head.left = last;
+    prev.right = head;
+    head.left = prev;
     
     return head;
 }

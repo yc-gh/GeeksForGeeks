@@ -1,45 +1,34 @@
-Node head;
+Node head, prev;
 
-//Using Depth First Traversal with stack
-//Whenever a node is popped from stack, append it to the linked list and set references
-
+//Using inorder traversal
+//Prev pointer keeps track of inorder nodes
+//Using prev, inorder nodes are linked to predecessors 
 Node bToDLL(Node root)
 {
-    Deque<Node> stack = new ArrayDeque<>();
-    
-    //Reference to keep track of last node in linked list
-    Node last = null;
-    
-    //Reference to keep track of nodes in the tree
-    Node curr = root;
-    
-    while(curr!=null || stack.size()>0)
+    if(root==null)
     {
-        while(curr != null)
-        {
-            stack.push(curr);
-            curr = curr.left;
-        }
-        
-        curr = stack.pop();
-        
-        //Create and insert node into linked list
-        if(head == null)
-        {
-            Node newnode = new Node(curr.data);
-            head = newnode;
-            last = head;
-        }
-        else
-        {
-            Node newnode = new Node(curr.data);
-            last.right = newnode;
-            newnode.left = last;
-            last = newnode;
-        }
-        
-        curr = curr.right;
+        return root;
     }
+    
+    //Recursively convert left subtree
+    bToDLL(root.left);
+    
+    //Set references to/from previous node
+    if(prev == null)
+    {
+        head = root;
+    }
+    else
+    {
+        prev.right = root;
+        root.left = prev;
+    }
+    
+    //Set prev to this node
+    prev = root;
+    
+    //Recursively convert right subtree
+    bToDLL(root.right);
     
     return head;
 }
