@@ -8,7 +8,7 @@ Node bToDLL(Node root)
     Deque<Node> stack = new ArrayDeque<>();
     
     //Reference to keep track of last node in linked list
-    Node prev = null;
+    Node last = null;
     
     //Reference to keep track of nodes in the tree
     Node curr = root;
@@ -24,18 +24,18 @@ Node bToDLL(Node root)
         curr = stack.pop();
         
         //Create and insert node into linked list
-        if(head==null)
+        if(head == null)
         {
             Node newnode = new Node(curr.data);
             head = newnode;
-            prev = head;
+            last = head;
         }
         else
         {
             Node newnode = new Node(curr.data);
-            prev.right = newnode;
-            newnode.left = prev;
-            prev = newnode;
+            last.right = newnode;
+            newnode.left = last;
+            last = newnode;
         }
         
         curr = curr.right;
