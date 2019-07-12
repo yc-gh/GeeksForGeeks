@@ -1,3 +1,6 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
 class GFG
  {
      
@@ -6,20 +9,18 @@ class GFG
     {
         int row;
         int col;
-        int dist;
         
-        Cell(int r, int c, int d)
+        Cell(int r, int c)
         {
             row = r;
             col = c;
-            dist = d;
         }
     }
     
     //Check if matrix cell is within bounds, is 1 and hasn't been visited
     static boolean isValid(int x, int y, int[][] grid, boolean[][] visited)
     {
-        if(x>=0 && x<grid.length && y>=0 && y<grid[0].length && grid[x][y]==1 && !visited[x][y])
+        if(x>=0 && x<grid.length && y>=0 && y<grid[0].length && grid[x][y]!=0 && !visited[x][y])
         {
             return true;
         }
@@ -32,19 +33,13 @@ class GFG
         //If source itself is 0, can't make a path from source
         if(grid[source.row][source.col] == 0)
         {
-            return -1;
+            return 0;
         }
         
         //If the destination is at source
         if(destX==source.row && destY==source.col)
         {
-            return 0;
-        }
-        
-        //If destination cell can't be accessed
-        if(grid[destX][destY] == 0)
-        {
-            return -1;
+            return 1;
         }
         
         //BFS
@@ -77,18 +72,18 @@ class GFG
                     //If destination cell is found, and it is valid
                     if(newX == destX && newY==destY)
                     {
-                        return curr.dist + 1;
+                        return 1;
                     }
                     
                     //Set visited for this adjacent cell and add it to queue
                     visited[newX][newY] = true;
-                    queue.offer(new Cell(newX, newY, curr.dist+1));    
+                    queue.offer(new Cell(newX, newY));    
                 }
             }
         }
         
         //If destination can't be reached
-        return -1;
+        return 0;
     }
      
 	public static void main (String[] args) throws IOException
@@ -99,25 +94,30 @@ class GFG
 	    {
 	        String[] input = br.readLine().trim().split("\\s+");
 	        int n = Integer.parseInt(input[0]);
-	        int m = Integer.parseInt(input[1]);
 	        input = br.readLine().trim().split("\\s+");
-	        int[][] grid = new int[n][m];
+	        int[][] grid = new int[n][n];
+	        int sourceX=0, sourceY=0, destX=0, destY=0;
 	        for(int i=0; i<n; i++)
 	        {
-	            for(int j=0; j<m; j++)
+	            for(int j=0; j<n; j++)
 	            {
-	                grid[i][j] = Integer.parseInt(input[i*m+j]);
+	                grid[i][j] = Integer.parseInt(input[i*n+j]);
+	                if(grid[i][j] == 1)
+	                {
+	                    sourceX = i;
+	                    sourceY = j;
+	                }
+	                else if(grid[i][j] == 2)
+	                {
+	                    destX = i;
+	                    destY = j;
+	                }
 	            }
 	        }
-	        input = br.readLine().trim().split("\\s+");
-	        int x = Integer.parseInt(input[0]);
-            int y = Integer.parseInt(input[1]);
-            
-            int sourceX = 0, sourceY = 0;
 	        
-	        Cell source = new Cell(sourceX, sourceY, 0);
+	        Cell source = new Cell(sourceX, sourceY);
 	        
-	        System.out.println(shortestPath(grid, x, y, source));
+	        System.out.println(shortestPath(grid, destX, destY, source));
 	    }
 	 }
 }
