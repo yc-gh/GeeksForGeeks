@@ -1,7 +1,10 @@
 class Implementation
 {
     //TODO
-    //If an adjacency list is provided, a min heap can be used at the step for finding min distance
+    //If an adjacency list is provided, a Min Heap OR Tree Set can be used at the step for finding min distance
+    //Make a class for each vertex consisting of it's index and distance
+    //Keep these objects in PriorityQueue and remove them once processed
+    //Track all processed objects using visited array
     
     //Print all distances
     static void printDistance(int[] dist)
