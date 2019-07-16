@@ -1,10 +1,12 @@
-public static void main (String[] args) throws IOException
-	 {
-	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+class Gfg
+{
+	public static void main (String[] args) throws IOException
+	{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	    int t = Integer.parseInt(br.readLine().trim());
 	    while(t-->0)
 	    {
-	        int n = Integer.parseInt(br.readLine().trim());
+			int n = Integer.parseInt(br.readLine().trim());
 			
 			//Keep two arrays
 	        //One for numbers ending with 0
@@ -17,10 +19,11 @@ public static void main (String[] args) throws IOException
 	        a[0] = b[0] = 1;
 	        for(int i=1;i<n;i++)
 	        {
-	            //To prevent overflow
+				//To prevent overflow
 	            a[i] = (a[i-1] + b[i-1])%1000000007;
 	            b[i] = a[i-1];
 	        }
 	        System.out.println((a[n-1]+b[n-1])%1000000007);
 	    }
-	 }
+	}
+}

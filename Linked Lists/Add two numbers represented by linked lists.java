@@ -4,15 +4,14 @@ Node addTwoLists(Node first, Node second) {
         Node temp = null; 
         int carry = 0, sum; 
   
-        while (first != null || second != null) //while both lists exist 
+        while (first != null || second != null) //while either list exist 
         { 
             // Calculate value of next digit in resultant list. 
             // The next digit is sum of following things 
             // (i)  Carry 
             // (ii) Next digit of first list (if there is a next digit) 
             // (ii) Next digit of second list (if there is a next digit) 
-            sum = carry + (first != null ? first.data : 0) 
-                    + (second != null ? second.data : 0); 
+            sum = carry + (first != null ? first.data : 0) + (second != null ? second.data : 0); 
   
             // update carry for next calulation 
             carry = (sum >= 10) ? 1 : 0; 
@@ -25,9 +24,11 @@ Node addTwoLists(Node first, Node second) {
   
             // if this is the first node then set it as head of 
             // the resultant list 
-            if (res == null) { 
+            if (res == null) 
+            { 
                 res = temp; 
-            } else // If this is not the first node then connect it to the rest. 
+            } 
+            else // If this is not the first node then connect it to the rest. 
             { 
                 prev.next = temp; 
             } 
@@ -36,15 +37,18 @@ Node addTwoLists(Node first, Node second) {
             prev = temp; 
   
             // Move first and second pointers to next nodes 
-            if (first != null) { 
+            if (first != null) 
+            { 
                 first = first.next; 
             } 
-            if (second != null) { 
+            if (second != null) 
+            { 
                 second = second.next; 
             } 
         } 
   
-        if (carry > 0) { 
+        if (carry > 0) 
+        { 
             temp.next = new Node(carry); 
         } 
   
