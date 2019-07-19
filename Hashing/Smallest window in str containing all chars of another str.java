@@ -11,6 +11,7 @@ class GFG
         int n1 = str.length;
         int n2 = pat.length;
         
+        //If length of string is less than pattern, pattern can't be matched
         if(n1 < n2)
         {
             return "-1";

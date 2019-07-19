@@ -15,12 +15,9 @@ class GFG
             return memo[i];
         }
         
-        int chosen = 0;
-        int notchosen = 0;
+        int chosen = arr[i] + findMaxMoney(arr, memo, n, i+2);
         
-        chosen = arr[i] + findMaxMoney(arr, memo, n, i+2);
-        
-        notchosen = 0 + findMaxMoney(arr, memo, n, i+1);
+        int notchosen = 0 + findMaxMoney(arr, memo, n, i+1);
         
         return memo[i] = Integer.max(chosen, notchosen);
     }

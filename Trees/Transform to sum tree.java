@@ -1,3 +1,5 @@
+class GFG
+{
     //Approach -- Each node becomes sum of its children and returns 
     //the new sum + it's original data
     int newTree(Tree root){
@@ -25,3 +27,4 @@
         if(root==null) return;
         newTree(root);
     }
+}
