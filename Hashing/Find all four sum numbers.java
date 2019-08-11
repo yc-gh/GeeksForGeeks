@@ -1,5 +1,8 @@
 //This approach is n^3
 //A n^2logn approach is available. Didn't work due to some issue with iteration order of map
+//A n^2 approach is possible by hashing sum of all pairs along with their indices
+//Search the hashmap for each possible sum such that all indices are unique
+
 //Loop through the array and check for sum == k
 public static void main (String[] args) throws IOException
     {

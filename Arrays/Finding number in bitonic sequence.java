@@ -1,3 +1,5 @@
+class Gfg
+{
     //Find the pivot element between the ascending and descending sequence using binary search
     //Search left subarray using binary search
     //Search right subarray using binary search
@@ -85,4 +87,5 @@
 		        System.out.println(search);
 		    }
 		}
-	}
+    }
+}
