@@ -7,13 +7,17 @@
 //For each node, check if it is within that range
 //For it's left subtree, the range becomes previousmin <-> node.data-1
 //For it's right subtree, the range becomes node.data+1 <-> previousmax
-boolean isBSTUtil(Node root,int min,int max)
+    
+class Gfg
 {
-    if(root==null) return true;
-    if(root.data<min || root.data>max) return false;
-    return isBSTUtil(root.left,min,root.data-1) && isBSTUtil(root.right,root.data+1,max);
-}
-int isBST(Node root)  
-{
-    return isBSTUtil(root,Integer.MIN_VALUE,Integer.MAX_VALUE)==true ? 1 : 0;
+    boolean isBSTUtil(Node root,int min,int max)
+    {
+        if(root==null) return true;
+        if(root.data<min || root.data>max) return false;
+        return isBSTUtil(root.left,min,root.data-1) && isBSTUtil(root.right,root.data+1,max);
+    }
+    int isBST(Node root)  
+    {
+        return isBSTUtil(root,Integer.MIN_VALUE,Integer.MAX_VALUE)==true ? 1 : 0;
+    }
 }
