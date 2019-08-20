@@ -1,4 +1,6 @@
-    //Approach --
+class Gfg
+{
+//Approach --
     //Check required sum - current node data at each node
     //If a null child is reached before sum reaches 0, return false as this can't be the path
     //If a non null node is reached with sum 0, this cannot be the path and no further checking required
@@ -25,4 +27,5 @@
     {
         if(node==null) return false;
         return checkSum(node.left,sum,node.data) || checkSum(node.right,sum,node.data);
-    
+    }
+}
