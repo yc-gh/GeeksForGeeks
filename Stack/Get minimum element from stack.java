@@ -1,81 +1,73 @@
-/* 
-  An alternative solution is to use two stacks
-  Push -- push to first stack and compare with top of second stack
-          if smaller, push to second stack as well
-          else push top of second stack onto itself
-  Pop -- Pop from both stacks and return from main stack
-  getMin -- Return top of auxiliary stack        
-
-//Initialization is not actually done here, compiler will move these into a constructor
-int minEle = -1;
-//Create object of stack 
-Stack<Integer> s = new Stack<>();
-/*returns min element from stack*/
-int getMin()
+class GfG
 {
-    return minEle;
-}
-
-/*returns popped element from stack*/
-int pop()
-{
-    //If stack is empty 
-    if(s.isEmpty()) return -1;
-    int y = s.pop();
-    //If popped element was last element, set minEle as -1
-    if(s.isEmpty()) 
+    int minEle = -1;
+    Stack<Integer> s = new Stack<>();
+    /*returns min element from stack*/
+    int getMin()
     {
-        minEle = -1;
+	    //If stack is empty
+	    if(s.size()<1) 
+	    {
+	        return -1;
+	    }
+	    return minEle;
     }
-    /*
-        If popped element is less than min element, this is the modified (encrypted)
-        value that was pushed and can be used to find the previous min element
-        2*currmin - prevmin = y (this expression was used)
-        2*currmin - y = prevmin
-        The method must return the current minimum, not the value on stack
-    */
-    else if(y < minEle)
+    
+    /*returns poped element from stack*/
+    int pop()
     {
-        int currmin = minEle;
-        minEle = 2*minEle - y;
-        return currmin;
+	    //If stack is empty
+	    if(s.size()<1)
+	    {
+	        return -1;
+	    }
+	    
+	    //Else get the top element 
+	    //And if popped element was min element
+	    //Pop again to get previous min
+	    //Exclude the case when only 1 element in stack
+	    int ele = s.pop();
+	    if(ele == minEle && s.size()>1)
+	    {
+	        minEle = s.pop();
+	    }
+	    
+	    //If stack becomes empty
+	    //Reset min element
+	    else if(s.size()<1)
+	    {
+	        minEle = -1;
+	    }
+	    return ele;
     }
-    return y;
-}
-/*push element x into the stack*/
-void push(int x)
-{
-    //When stack is empty, push and make the element min element
-    if(s.isEmpty())
+    /*push element x into the stack*/
+    void push(int x)
     {
-        s.push(x);
-        minEle = x;
-        return ;
-    }
-    if(x<minEle)
-    {
-        /*
-            We need a way to find previous min from current element
-            Since we can't just directly map this element to previous min, 
-            some arithmetic value involving previous min must be pushed to stack.
-            Then this new value can be reversed to find the previous value.
-            Also, since this value is the new min BUT the stack will not contain this exact value,
-            we need to use an expression that can be detected as being the min value (such as a value that is smaller than this min value)
-            So a suitable expression is 
-            x < min (known) 
-            x - min < 0
-            x - min + x < x
-            2*x - min < x
-            y = 2*x - min should be pushed to stack 
-        */
-        s.push(2*x-minEle);
-        //Set minEle as this element
-        minEle = x;
-    }
-    //Else just push the element
-    else
-    {
-        s.push(x);
-    }
-    return;
+	    //If first push into stack
+	    //Set min element
+	    if(minEle == -1)
+	    {
+	        s.push(x);
+	        minEle = x;
+	    }
+	    
+	    //Else 
+	    //If pushed element is smaller than min element
+	    //Push min element then push new element and set new min
+	    else
+	    {
+	        if(x <= minEle)
+	        {
+	            s.push(minEle);
+	            s.push(x);
+	            minEle = x;
+	        }
+	        
+	        //Else just push new element
+	        else
+	        {
+	            s.push(x);
+	        }
+	    }
+    }	
 }
