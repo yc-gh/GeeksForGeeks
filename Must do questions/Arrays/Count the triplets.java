@@ -1,7 +1,7 @@
 // https://practice.geeksforgeeks.org/problems/count-the-triplets/0
 
 /* 
-123456789
+
 ALGORITHM
 
 Count all triplets in array with sum S
@@ -60,7 +60,7 @@ class GFG
 	    {
 	        int n = Integer.parseInt(br.readLine().trim());
 	        String[] input = br.readLine().trim().split("\\s+");   
-	        Integer[] arr = new Integer[n];
+            Integer[] arr = new Integer[n];
 	        for(int i=0; i<n; i++)
 	        {
 	            arr[i] = Integer.parseInt(input[i]);
