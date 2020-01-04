@@ -20,6 +20,7 @@ class Traversal
                         queue.offer(adjNode);
                     }
                 }
+                System.out.println(adjNode+" ");
             }
         }
     }
