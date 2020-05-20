@@ -2,19 +2,22 @@
 //If characters don't match, substring length is 0
 //If they do match, substring length is 1 + previous characters' substring length
 
-static int lcs(int i, int j, int count) { 
-  
-    if (i == 0 || j == 0) { 
-        return count; 
-    } 
-
-    if (X.charAt(i - 1) == Y.charAt(j - 1)) { 
-        count = lcs(i - 1, j - 1, count + 1); 
-    } 
-    count = Math.max(count, Math.max(lcs(i, j - 1, 0), 
-                        lcs(i - 1, j, 0))); 
-    return count; 
-} 
+private static int recur(String x, String y, 
+	            int n, int m, int[][] memo)
+	 {
+	     if(n==0 || m==0) return 0;
+	     if(memo[n][m]!=-1) return memo[n][m];
+	     recur(x,y,n-1,m,memo);
+	     recur(x,y,n,m-1,memo);
+	     if(x.charAt(n-1)==y.charAt(m-1))
+	     {
+	         memo[n][m] = 1 + recur(x,y,n-1,m-1,memo);
+	         lcsLength = Integer.max(lcsLength, memo[n][m]);
+	         return memo[n][m];
+	     }
+	     
+	     return memo[n][m] = 0;
+	 }
 
 
 public static void main (String[] args) throws IOException
