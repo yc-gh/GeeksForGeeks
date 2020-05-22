@@ -83,3 +83,69 @@
 	        }
 	        System.out.println(k[n][W]);
 	    }
+	    
+	    
+//EDIT 22-05-20
+	import java.util.*;
+	import java.lang.*;
+	import java.io.*;
+	class GFG
+	 {
+		public static void main (String[] args) throws IOException
+		 {
+		    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		    int t = Integer.parseInt(br.readLine().trim());
+		    while(t-->0)
+		    {
+			int n = Integer.parseInt(br.readLine().trim());
+			int cap = Integer.parseInt(br.readLine().trim());
+			int[] val = new int[n];
+			int[] wt = new int[n];
+			String[] input = br.readLine().trim().split("\\s+");
+			for(int i=0; i<n; i++)
+			{
+			    val[i] = Integer.parseInt(input[i]);
+			}
+			input = br.readLine().trim().split("\\s+");
+			for(int i=0; i<n; i++)
+			{
+			    wt[i] = Integer.parseInt(input[i]);
+			}
+		       // int[][] memo = new int[n+1][cap+1];
+		       // for(int[] a : memo) Arrays.fill(a,-1);
+		       // System.out.println(dp(val, wt, n, 0, cap, memo));
+		        System.out.println(dp(val, wt, n, cap));
+		    }
+		 }
+
+		 private static int dp(int[] val, int[] wt, 
+				    int n, int curr, int cap, int[][] memo)
+		 {
+		     if(curr>=n || cap<1) return 0;
+		     if(memo[curr][cap]!=-1) return memo[curr][cap];
+		     int taken=0, nottaken=0;
+		     if(wt[curr]<=cap)
+		     {
+			 taken = val[curr] + dp(val,wt,n,curr+1,cap-wt[curr],memo);
+		     }
+		     nottaken = dp(val,wt,n,curr+1,cap,memo);
+		     return memo[curr][cap] = Integer.max(taken,nottaken);
+		 }
+
+		 private static int dp(int[] val, int[] wt, int n, int cap)
+		 {
+		     int[][] dp = new int[n+10][cap+10];
+		     for(int i=n-1; i>=0; i--)
+		     {
+			 for(int j=0; j<=cap; j++)
+			 {
+			     if(wt[i]<=j)
+			     {
+				dp[i][j] = val[i] + dp[i+1][j-wt[i]];
+			     }
+			 dp[i][j] = Integer.max(dp[i][j], dp[i+1][j]);
+			 }
+		     }
+		     return dp[0][cap];
+		 }
+	}
