@@ -1,0 +1,53 @@
+https://practice.geeksforgeeks.org/problems/cutted-segments/0
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class GFG
+ {
+	public static void main (String[] args) throws IOException
+	 {
+	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	    int t = Integer.parseInt(br.readLine().trim());
+	    while(t-->0)
+	    {
+            int n = Integer.parseInt(br.readLine().trim());
+            String[] input = br.readLine().trim().split("\\s+");
+            int[] cuts = new int[3];
+            for(int i=0; i<3; i++)
+            {
+                cuts[i] = Integer.parseInt(input[i]);
+            }
+            // int[][] dp = new int[n+1][4];
+            // for(int[] a : dp) Arrays.fill(a,-1);
+            // System.out.println(dp(n, cuts, 0, dp));
+            System.out.println(dp(n,cuts));
+	    }
+	 }
+	 
+	 private static int dp(int n, int[] cuts, int i, int[][] dp)
+	 {
+	     if(n==0) return 0;
+	     if(n<0 || i>=cuts.length) return Integer.MIN_VALUE;
+	     if(dp[n][i]!=-1) return dp[n][i];
+	     int taken=0,nottaken=0;
+         taken = 1 + dp(n-cuts[i], cuts, i, dp);
+         nottaken = dp(n, cuts, i+1, dp);
+         return dp[n][i] = Integer.max(taken,nottaken);
+	 }
+
+    private static int dp(int n, int[] cuts)
+    {
+        int[] dp = new int[n+1];
+        Arrays.fill(dp,Integer.MIN_VALUE);
+        dp[0]=0;
+        for(int i=0; i<cuts.length; i++)
+        {
+            for(int j=cuts[i]; j<=n; j++)
+            {
+                dp[j] = Integer.max(1+dp[j-cuts[i]], dp[j]);
+            }
+        }
+        return dp[n];
+    }
+}
