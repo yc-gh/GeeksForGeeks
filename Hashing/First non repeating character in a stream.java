@@ -3,6 +3,81 @@
 //Iterate through given stream storing all counts and first indices
 //Iterate through character array and get character with count 1 and least index
 
+// O(n) approach with hashmap and DLL
+class GFG
+{
+    static class Node
+    {
+        char ch;
+        Node next, prev;
+        Node(char c) 
+        {
+            ch = c;
+        }
+    }
+    
+    static Node head, tail;
+    
+	public static void main (String[] args) throws IOException
+     {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int t = Integer.parseInt(br.readLine().trim());
+        while(t-->0)
+        {
+            int n = Integer.parseInt(br.readLine().trim()); 
+            String[] input = br.readLine().trim().split("\\s+");
+            Map<Character, Node> map = new HashMap<>();
+            StringBuilder sb = new StringBuilder();
+            
+            head=new Node('0');
+            tail = new Node('0');
+            head.next = tail;
+            tail.prev = head;
+            
+            for(String s : input)
+            {
+                char ch = s.charAt(0);
+                
+                if(!map.containsKey(ch))
+                {
+                    Node newNode = new Node(ch);
+                    addNode(newNode);
+                    map.put(ch, newNode);
+                }
+                else
+                {
+                    Node node = map.get(ch);
+                    if(node!=null) 
+                    {
+                        removeNode(node);
+                        map.put(ch, null);
+                    }
+                }
+                
+                if(head.next == tail) sb.append("-1 ");
+                else sb.append(head.next.ch).append(" ");
+            }
+            
+            System.out.println(sb.toString().trim());
+            
+        }
+     }
+     
+    private static void addNode(Node node)
+    {
+        node.next = tail;
+        node.prev = tail.prev;
+        tail.prev.next = node;
+        tail.prev = node;
+    }
+    
+    private static void removeNode(Node node)
+    {
+        node.prev.next = node.next;
+        node.next.prev = node.prev;
+    }
+}
+
 //Keep adding non repeated characters to a list
 //And keep track of repeated characters using a boolean array
 //Remove element from list if it is repeated
