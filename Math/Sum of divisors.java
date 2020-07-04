@@ -55,7 +55,7 @@ class GFG
 	 
 	 private static void sieve(int n, int[] spf)
 	 {
-	     spf[1] = 1;
+// 	     spf[1] = 1;
 	     
 	     for(int i=2; i<=n; i++) spf[i] = i;
 	     
